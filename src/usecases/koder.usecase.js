@@ -1,15 +1,21 @@
-const koder =require("../models/koder.model")
+const Koder = require("../models/koder.model")
 
 // uso de caso son funciones que van a crear, agendar cita, iniciar secion
 // no se tiene acesso al request y al body
-const create =(koderData)=>{
-    // create koder
-    const koder = koder.create(koderData)
-    return koder
+
+
+// Funciones
+// Handlers
+
+// 1- Uso de caso -> Crear un koder
+const create = (koderData) => {
+  // Crear un koder
+  const koder = Koder.create(koderData)
+  return koder
 }
-// get koder
-//actualizar koder
-// eiminar koder
 
-module.exports = {create} //se pueden agregar lo que se puede exportar con una coma
+// Get Koder
+// Actualizar Koder
+// Eliminar Koder
 
+module.exports = { create }//se pueden agregar lo que se puede exportar con una coma
