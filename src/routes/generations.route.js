@@ -1,12 +1,11 @@
-// Endpoints
 const express = require("express")
 const { 
-    createMentor,
-    getMentor,
-    allMentors,
-    updateMentor,
-    removeMentor
-    } = require("../usecases/mentor.usecase")
+    createGeneration,
+    getGeneration,
+    allGeneration,
+    updateGeneration,
+    removeGeneration
+    } = require("../usecases/generations.usecase")
   
   const router = express.Router()
   
@@ -16,12 +15,12 @@ const {
   
     const { body } = request
     try {
-      const mentor = await createMentor(body)
+      const generation = await createGeneration(body)
       response.status(201)
       response.json({
         success: true,
         data: {
-          mentor
+          generation
         }
       })
     } catch(error) {
@@ -40,12 +39,12 @@ const {
     try {
       // Path params
       const { params } = request
-      const mentor = await getMentor(params.id) 
+      const generation = await getGeneration(params.id) 
       // Si no ponemos status -> 200
       response.json({
         success: true,
         data: {
-          mentor
+          generation
         }
       })
     }catch(error) {
@@ -64,11 +63,11 @@ const {
       const { query } = request
       // {}
       // { name: Alfredo }
-      const mentors = await allMentors(query)
+      const generation = await allGeneration(query)
       response.json({
         success: true,
         data: {
-          mentors
+          generation
         }
       })
     }catch(error) {
@@ -83,12 +82,12 @@ const {
   router.patch("/:id", async (request, response) => {
     try{
       const { params, body } = request
-      const mentor = await updateMentor(params.id, body)
+      const generation = await updateGeneration(params.id, body)
   
       response.json({
         success: true,
         data: {
-          mentor
+          generation
         }
       })
   
@@ -104,7 +103,7 @@ const {
   router.delete("/:id", async (request, response) => {
     try{
       const { params } = request
-      const mentor = await removeMentor(params.id)
+      const generation = await removeGeneration(params.id)
       response.json({
         success: true,
       })
@@ -118,3 +117,4 @@ const {
     }
   })
   module.exports = router
+
